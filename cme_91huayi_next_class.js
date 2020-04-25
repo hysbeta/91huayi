@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
-// @author       You
+// @author       VX:Acdtms4zfx
 // @match        http://*.91huayi.com/pages/exam_result.aspx*
 // @grant        none
 // ==/UserScript==
