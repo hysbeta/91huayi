@@ -1,63 +1,457 @@
 // ==UserScript==
-// @name         cme_91huayi_exam
+// @name         cme_91huayi_auto_exam
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
-// @author       VX:Acdtms4zfx
-// @match        http://*.91huayi.com/pages/exam.aspx*
+// @author       You
+// @match        *://*.91huayi.com/pages/exam.aspx?*
+// @match        *://*.91huayi.com/pages/exam_result.aspx?*
+// @match        *://*.91huayi.com/course_ware/course_ware_cc.aspx?*
+// @match        *://*.91huayi.com/pages/exam.aspx?*
+// @match        *://*.91huayi.com/pages/exam_result.aspx?*
+// @match        *://*.91huayi.com/course_ware/course_ware_polyv.aspx?*
+// @require      https://cdn.bootcss.com/blueimp-md5/1.0.1/js/md5.min.js
 // @grant        none
 // ==/UserScript==
+//这个考试是其他大神的代码，年代久远忘了在哪抄的了
+//会近期补充一个自动答题的代码，因为这个大神的乱撞答案现在会有几率出验证码。。。
+
 
 (function() {
-    'use strict'
-    alert = console.log;
-    var arr_answer = ["A、2008年以后以重工业为主导","A、科技实力跃升，跻身创新型国家前列","A、迈入制造强国行列","A、普惠性、高质量、可持续","A、人民生活总体上达到温饱","A、社会保险卡","A、实施“头雁”工程","A、市民待遇","A、以4G、量子通信为引领的新一代信息技术及IT产业","B、1∕4","B、10","B、129","B、3","B、产业兴旺 生态宜居 乡风文明 治理有效 生活富裕 摆脱贫困","B、创新、创业、创意","B、二〇二〇年","B、防范生态危机","B、房地产业处于龙头地位","B、局部领跑","B、劳动力短缺","B、三次产业从“一、二、三”结构演变为“二、三、一”结构，进一步演变为“三、二、一”结构","B、市场高水平互联互通","B、维护祖国的团结稳定，早日实现“和平统一”","B、先导产业就是主导产业","B、支柱产业一定是主导产业","B、制度创新","B、住有所居","C、10年","C、4.5","C、产业结构调整","C、电子设备制造业占先进制造业的比重最高","C、建成 决胜","C、农民和土地","C、十六大","C、市场","D、产业战略、产业政策、产业规划没有什么差别","D、敢闯敢试、敢为人先、埋头苦干","D、坚持制度创新","D、绿水青山就是金山银山","D、权力清单、责任清单、负面清单","D、人才强国战略、军民融合发展战略、乡村振兴战略","D、是促进收入分配公平的根本措施","D、新时代","D、以上都包括","D、以上都是","D、战略产业是永恒不变的","D、战略性新兴产业就是主导产业","D、总体小康只是城市的，全面小康还包括农村","E、以上都是"];
-    var special_question_true = ["2、广东提出实施以功能区为引领的区域协调发展战略，加快构建形成“一核一带一区”区域发展新格局。其中，“一区”是指北部生态发展区，是全省重要的生态屏障（ ）","1、发展是第一要务，人才是第一资源，创新是第一动力（ ）","1、“三期叠加”是指增长速度换档期、结构调整阵痛期和前期刺激政策消化期的叠加（ ）","2、广东常住人口规模已连续稳居全国首位12年（ ）","1、广东人才区域分布极不均衡（ ）","2、2018年，广东常住人口城镇化率首次超过70%（ ）","1、2018年，广东碳排放权交易市场总体规模位居全国第一，世界第三位，仅次于欧盟和韩国（ ）","2、环保投入占GDP的比重严重偏低，是广东生态文明建设不充分的重要体现（ ）","2、“十四五”广东生态文明建设的总体思路是：巩固前期成果、调整目标方向、优化治理手段、完善制度体系、提高发展质量（ ）","1、农业农村污染问题是广东生态文明建设城乡之间不平衡的表现（ ）","2、《粤港澳大湾区发展规划纲要》于2019年2月正式公布全文（ ）","2、粤港澳合作经历了“前店后厂”的阶段（ ）","2、广深港澳科创走廊是粤港澳大湾区建设的重要抓手之一（ ）"];
-    var special_question_false = ["1、深圳对照十九大要求，提出“民生七优”工作目标：幼有善育、学有优教、劳有厚得、病有良医、老有所养、住有所居、弱有众扶。体现了深圳的担当，以及追逐全球城市定位、彰显社会主义优越性的本质意义（ ）","1、广东人口转变具有数量转变与质量转变同步特征（ ）","1、《粤港澳大湾区发展规划纲要》中没有提出有关生态文明建设方面的任务要求（ ）","2、2019年，广东71个国考断面水质优良比例为77.5%，已经达到了国家下达的约束性考核目标（ ）","1、粤港澳大湾区包括了2个特别行政区和10个广东省城市（ ）","1、粤港澳大湾区的集装箱吞吐量低于东京湾区（ ）","1、粤港澳大湾区和改革开放初期粤港澳合作的目标是完全相同的（ ）","3、珠海是粤港澳大湾区的四个中心城市之一（ ）"];
-    console.log('Script Ready!');
-    var qc = document.querySelector("#gvQuestion > tbody").childElementCount;
-    for (var i=1;i<=qc;i++){
-		var type = null;
-        if (document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td") != null){
-            for (var l = 0; l < special_question_true.length; l++) {
-                var question_t = special_question_true[l];
-                if (question_t == document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table > thead > tr > th > span").textContent.trim() ) {
-                    type="TQ";
+    'use strict';
+
+    //http://cme3.91huayi.com/pages/exam.aspx?cwid=f0655634-01b1-4856-aabf-a4fe0187e4d8#
+    //http://cme3.91huayi.com/pages/exam_result.aspx?cwid=f0655634-01b1-4856-aabf-a4fe0187e4d8
+    //http://cme3.91huayi.com/course_ware/course_ware_cc.aspx
+
+    console.log('91huayi_auto_exam');
+
+    //问题分隔符
+    var strSplitArryQuestion = "@&"
+    //答案前缀
+    var prefixAnswer = "ANS_";
+    //自动开始考试
+    var auto_start_exam = true;
+    //自动提交
+    var auto_submit = true;
+    //自动重新考试
+    var auto_replay_exam = true;
+    //自动进入下一课程
+    var auto_next_course = true;
+    //考试通过判断字符
+    var pass_exame_key = '通过';
+    //课程完成判断字条
+    var course_complete_key='完成';
+    //答案列表
+    var answer_key = ['A','B','C','D','E','F','G','H'];
+
+    var currentURL = window.location.href;
+    //正则获取cwid
+    var cwid_regex=/(?<cwid>\d*)/
+
+    //正则判断页面
+    var course_ware = /[course_ware_cc.aspx|course_ware_polyv]/;
+    var exam = /exam.aspx/;
+    var exam_result = /exam_result.aspx/
+    //获取参数
+    var cwid = getParam(currentURL,'cwid');
+
+    var course_question =[];
+    var course_question_answer =[];
+    //当前自动答题序号
+    var question_answer_index =[];
+
+    var course_complete =getCookie("course_complete_" + cwid);
+    course_complete = course_complete? parseInt(course_complete):0;
+
+    if(course_complete==1){
+        return;
+    }
+    //console.log("cwid:" + cwid);
+    //console.log(currentURL);
+
+    if(exam.test(currentURL)){
+       main();
+    }else if(exam_result.test(currentURL)){
+        handExamResult();
+    //}else if(course_ware.test(currentURL)){
+        //enableStartExam();
+    }
+
+    //启用考试按钮
+    function enableStartExam(){
+        var btn_exam = $("#jrks");
+        btn_exam.attr('target','_blank')
+        //custom_player_stop();
+        // console.log("enableStartExam");
+        showExam(true);
+        if(auto_start_exam){
+            var p = $("<p>   </p>");
+            p.appendTo(btn_exam);
+            setTimeout(() => {
+                p.trigger('click');
+            }, 1000);
+        }
+        setTimeout(() => {
+                window.close();
+        }, 10000);
+    }
+
+    function getAnswerIndex(key){
+        return $.inArray(key,answer_key);
+    }
+
+    // 答题
+    function main(){
+        var questionArray = getCourseQuestions();
+
+        //console.log("questionArray:" + questionArray);
+
+        var current_answer_index = getQuestionAnswerIndex();
+        current_answer_index = current_answer_index ? current_answer_index :0;
+        // switch(current_answer_index){
+        //     case 0:
+        //         fiveStar();
+        //         first_step_auto_answer();
+        //         break;
+        //     default:
+        //         next_step_auto_answer();
+        //         break;
+        // }
+        if(current_answer_index ==0){
+            fiveStar();
+        }
+        next_step_auto_answer();
+    }
+
+    function fiveStar(){
+        $(".five-stars").click();
+    }
+    // function first_step_auto_answer(){
+    //     var current_answer_index = question_answer_index[cwid];
+    //     current_answer_index = current_answer_index ? current_answer_index:0;
+    //     var count = getQuestionCount();
+    //     for(var i=0;i<count;i++){
+    //        selectAnwser(i,current_answer_index);
+    //     }
+    //     current_answer_index = current_answer_index + 1;
+    //     setCookie('question_answer_index_'+cwid,current_answer_index);
+    //     submitAnswer();
+    // }
+
+    function next_step_auto_answer(){
+        var current_answer_index = getQuestionAnswerIndex();
+        var questionArray = getCourseQuestions();
+        var answer = getCourseQuestionAnswer();
+        var md5_answer = getMD5CourseQuestionAnswer();
+        var count = getQuestionCount();
+
+        console.log(answer)
+        console.log(md5_answer)
+
+        if(current_answer_index>5) return;
+         for(var i=0;i<count;i++){
+             var question = questionArray[i];
+
+             var md5_question =prefixAnswer + md5(question);
+             var md5_ans = md5_answer[md5_question];
+             if(!md5_ans){
+                selectAnwser(i,current_answer_index);
+             }else{
+                selectAnwser(i,getAnswerIndex(md5_ans));
+             }
+
+            //  var ans = answer[question];
+            //  if(!ans){
+            //     selectAnwser(i,current_answer_index);
+            //  }else{
+            //     selectAnwser(i,getAnswerIndex(ans));
+            //  }
+        }
+        current_answer_index +=1;
+        setCookie('question_answer_index_'+cwid,current_answer_index);
+        setTimeout(function(){
+            submitAnswer();
+        },1000);
+    }
+
+    //处理结果
+    function handExamResult(){
+        console.log("handExamResult");
+        if( isPassExam() || isCourseComplete()){
+            courseComplete();
+            if(auto_next_course){
+                next_course();
+            }
+            return;
+        }
+
+
+        var wrongArry = getWrongArray();
+        var md5_wrongArray = wrongArry.map(function(v,i){
+            return md5(v);
+        })
+        var current_answer_index = getQuestionAnswerIndex();
+        var pre_current_answer_index = current_answer_index ? current_answer_index -1:0;
+        var key = answer_key[pre_current_answer_index];
+        //console.log("上一次测试值："+ key);
+        var questionArray = getCourseQuestionsFromCookie();
+        var answer = getCourseQuestionAnswer();
+        var md5_answer = getMD5CourseQuestionAnswer();
+        if(current_answer_index >5) {
+            console.log("answer"+ JSON.stringify(answer));
+            return;
+        }
+
+        for(var i =0; i< questionArray.length; i++){
+         var question = questionArray[i];
+            // if($.inArray(question,wrongArry) ==-1){
+
+            var md5_key = md5(question)
+            if($.inArray(md5_key,md5_wrongArray) ==-1){
+               var  md5_question = prefixAnswer + md5_key;
+               var hv = md5_answer[md5_question];
+               hv = hv ? hv:key;
+               md5_answer[md5_question] = hv;
+
+                var v = answer[question];
+                v = v ? v:key;
+                answer[question] = v;
+            }
+        }
+        var str_answer = JSON.stringify(answer);
+        var str_md5_answer = JSON.stringify(md5_answer);
+
+        setCookie("course_question_answer_" + cwid,str_answer);
+        setCookie("course_question_answer_md5_" + cwid,str_md5_answer);
+        console.log(answer);
+        console.log(md5_answer);
+        replay_exame();
+        //console.log("wrongArry"+wrongArry);
+    }
+
+    function deleteAllCookie(){
+        delCookie("course_question_"+cwid);
+        delCookie("course_question_answer_"+cwid);
+        delCookie("course_question_answer_md5"+cwid);
+        delCookie("question_answer_index_"+cwid);
+    }
+
+    function printAnswer(){
+        var answer = getCourseQuestionAnswer();
+        console.log("answer" + JSON.stringify(answer));
+    }
+
+    function courseComplete(){
+        setCookie("course_complete_" + cwid,1);
+        printAnswer();
+        deleteAllCookie();
+        return;
+    }
+
+    function getCourseQuestions(){
+        var arryQuestion=[];
+        var count = getQuestionCount();
+        for(var i = 0;i< count;i++){
+            var qid = '#gvQuestion_question_'+i;
+            arryQuestion.push($(qid).text().substring(2));
+        }
+        var strArryQuestion ='';
+        $.each(arryQuestion,function(i,v){
+            strArryQuestion += strArryQuestion.length ==0 ? v: strSplitArryQuestion + v;
+        })
+
+        setCookie("course_question_" + cwid,strArryQuestion);
+        return arryQuestion;
+    }
+    function getCourseQuestionsFromCookie(){
+        var arryQuestion = getCookie("course_question_" + cwid);
+        if(arryQuestion){
+            return arryQuestion.split(strSplitArryQuestion);
+        }
+    }
+
+    function getQuestionAnswerIndex(){
+        var index = getCookie('question_answer_index_'+cwid);
+        return index ? parseInt(index):0;
+    }
+
+    function getCourseQuestionAnswer(){
+        var arryAnswer = getCookie("course_question_answer_" + cwid);
+        if(arryAnswer){
+            return $.parseJSON(arryAnswer);
+        }else{
+            arryAnswer ={};
+            return arryAnswer;
+        }
+    }
+
+   function getHashCourseQuestionAnswer(){
+        var arryAnswer = getCookie("course_question_answer_hash_" + cwid);
+        if(arryAnswer){
+            return $.parseJSON(arryAnswer);
+        }else{
+            arryAnswer ={};
+            return arryAnswer;
+        }
+    }
+
+    function getMD5CourseQuestionAnswer(){
+        var arryAnswer = getCookie("course_question_answer_md5_" + cwid);
+        if(arryAnswer){
+            return $.parseJSON(arryAnswer);
+        }else{
+            arryAnswer ={};
+            return arryAnswer;
+        }
+    }
+
+    //获取问题
+    function getQuestionCount(){
+        return $("table[class='tablestyle']").length;
+    }
+    //获取答错题目
+    function getWrongArray(){
+        var arryWrong = [];
+        var li_list = $("div[class='left']>dl>dd")
+        var count =li_list.length;
+        for(var i=0;i<count;i++){
+           arryWrong.push($(li_list[i]).attr("title").trim());
+        }
+        return arryWrong;
+    }
+
+    //选择答案
+    function selectAnwser(questionIndex,itemIndex){
+        var anwser_list = $("table[class='tablestyle2']")[questionIndex];
+        var anwser_item = $(anwser_list).find("input")[itemIndex];
+        $(anwser_item).click();
+    }
+
+    //提交
+    function submitAnswer(){
+        if(!auto_submit) return;
+        var btnSumbit = $("#btn_submit");
+        $(btnSumbit).click();
+    }
+
+    //重新考试
+    function replay_exame(){
+        if(!auto_replay_exam) return ;
+        var btn_relay_exame = $("body > div.case3 > div.left > div > input.bule");
+        if(btn_relay_exame.length =1){
+            btn_relay_exame.click();
+        }else{
+            console.log('btn_replay_exam not find');
+        }
+    }
+    //判断考试通过
+    function isPassExam(){
+        var result_flag = false;
+        var pass_exam_obj = $("body > div.case4 > b");
+        if(pass_exam_obj){
+            var pass_str = pass_exam_obj.html();
+            if(pass_str){
+                if(pass_str.indexOf(pass_exame_key) == -1){
+                    result_flag = false;
+                }else{
+                    result_flag = true;
                 }
             }
-			for (var m = 0; m < special_question_false.length; m++) {
-                var question_f = special_question_false[m];
-                if (question_f == document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table > thead > tr > th > span").textContent.trim() ) {
-                    type="FQ";
+        }
+        return result_flag;
+    }
+
+    function isCourseComplete(){
+        var result_flag = false;
+        var course_complete_obj =$("body > div.case2 > b");
+        if(course_complete_obj){
+            var complete_str = course_complete_obj.html();
+            if(complete_str){
+                if(complete_str.indexOf(course_complete_key) == -1){
+                    result_flag = false;
+                }else{
+                    result_flag=true;
                 }
             }
-			console.log(type);
-			var sc = document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td").childElementCount;
-			for(var j=1;j<=sc;j++){
-				if (document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2)> tbody > tr:nth-child("+j+") > td") != null){
-					console.log("Ready for question");
-					if (type=="TQ"){
-						if ("A、正确" == document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2)> tbody > tr:nth-child("+j+") > td").textContent.trim() ) {
-							document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2)> tbody > tr:nth-child("+j+") > td > input").click();
-						};
-					}else if(type=="FQ"){
-						if ("B、错误" == document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2)> tbody > tr:nth-child("+j+") > td").textContent.trim() ) {
-							document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2)> tbody > tr:nth-child("+j+") > td > input").click();
-						};
-					}else{
-						for (var s = 0; s < arr_answer.length; s++) {
-							var thisEntry = arr_answer[s];
-							if (thisEntry == document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2)> tbody > tr:nth-child("+j+") > td").textContent.trim() ) {
-								document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2)> tbody > tr:nth-child("+j+") > td > input").click();
-							};
-						};
-					};
-				};
-			};
-        };
-    };
-    document.querySelector("#btn_submit").click();
-    setTimeout( function(){
-    location.reload();
-    }, 5 * 1000 );
+        }
+        return result_flag;
+    }
+
+    //点击下一课程
+    function next_course(){
+        var inputs = $("body > div.case3 > div.left > dl > dd> input[class='one']");
+        var undo_inputs = inputs.map(function(v,i){
+            if($(v).value ==""){
+                return v;
+            }
+        });
+        if(undo_inputs.length >0){
+            $(undo_inputs[0]).click();
+        }
+    }
+    //==================================================基础方法==========================================================//
+
+    function setCookie(key, value,day) {
+       // var Days = 30;
+       // var exp = new Date();
+       // exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+       // //document.cookie = key + "=" + escape(value) + ";expires=" + exp.toGMTString();
+       // document.cookie = key + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+
+        if(day){     //当设置的时间等于0时，不设置expires属性，cookie在浏览器关闭后删除
+            var expires = day * 24 * 60 * 60 * 1000;
+            var date = new Date(+new Date()+expires);
+            document.cookie = key + "=" + value + ";expires=" + date.toUTCString();
+        }else{
+            document.cookie = key + "=" + value;
+        }
+    }
+
+    function getCookie(key) {
+        var arr, reg = new RegExp("(^| )" + key + "=([^;]*)(;|$)");
+        if(arr = document.cookie.match(reg)){
+            return unescape(arr[2]);
+        } else{
+            return "";
+        }
+    }
+
+    function delCookie(key) {
+        setCookie(key,'',-1);
+       // var exp = new Date();
+       // exp.setTime(exp.getTime() - 1);
+       // var cval = getCookie(key);
+       // if (cval != null){
+       //     document.cookie = key + "=" + escape('') + ";expires=" + exp.toGMTString();
+       // }
+    }
+
+    //获取字符串的哈希值
+    function getHashCode(str,caseSensitive){
+        if(!caseSensitive){
+            str = str.toLowerCase();
+        }
+        // 1315423911=b'1001110011001111100011010100111'
+        var hash  =   1315423911,i,ch;
+        for (i = str.length - 1; i >= 0; i--) {
+            ch = str.charCodeAt(i);
+            hash ^= ((hash << 5) + ch + (hash >> 2));
+        }
+
+        return  (hash & 0x7FFFFFFF);
+    }
+
+      //从url获取参数
+    function getParam(url,key){
+        var arry = url.split("?");
+        var arry_params = arry[1].toString().split("&");
+        var params=[];
+        for(var i =0;i< arry_params.length ;i++){
+            var key_value = arry_params[i].split("=");
+            params[key_value[0]]= key_value[1];
+        }
+        return params[key];
+    }
+
 })();
