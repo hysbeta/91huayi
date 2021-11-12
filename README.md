@@ -1,11 +1,11 @@
 # 91huayi
-91华医 2020 公需课 自动看 考试 下一节
+91华医 2021 公需课 科技创新现状与发展趋势 自动看 考试 下一节
 
-2020年公需课：广东“十四五”经济社会发展趋势与战略重点
+2021年公需课：科技创新现状与发展趋势
 
 用法
 
-1.使用chrome浏览器，打开网站并启用Flash
+1.使用chrome浏览器
 
 2.下载油猴插件
 https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo
@@ -14,6 +14,6 @@ https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo
 
 4.点开学习中的课，打开让他挂着(最好打开完停留在视频页面，千万不要切换到别的Tab)
 
-技术有限，不会自动跳过视频，只能让它自己看自己考试自己下一节，一天就能挂完。
+技术有限，不会自动跳过视频，只能让它自己看自己考试自己下一节，回答其中的问题，两三天就能挂完。
 
-本人使用途中没有遇到视频中途出现提问，并靠脚本看完了全部的课。。。
+希望可以为你节省下宝贵的时间。
