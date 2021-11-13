@@ -10,7 +10,8 @@
 
 (function() {
     'use strict'
-    console.log('Script Ready!');
+    alert = console.log;
+    setTimeout(function(){console.log('cme_91huayi_next_class');},5000);
     if (document.querySelector("body > div.case4 > b").textContent=="考试通过！"){
         var nodenumber = document.querySelector("body > div.case3 > div.left > dl").childElementCount;
         var i = 2
@@ -21,4 +22,5 @@
             }
         };
     };
+    setTimeout(function(){location.reload();},30000);
 })();
