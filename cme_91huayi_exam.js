@@ -11,7 +11,7 @@
 (function() {
     'use strict'
     alert = console.log;
-    setTimeout((function(){console.log('Script Ready!')}),5000);
+    setTimeout(function(){console.log("Script Ready!");},5000);
     var qdict = {
         "《广东省数字经济发展规划（2018-2025年）》提出，广东省数字经济发展面临的形势包括以下哪些":"以上都是",
         "发达国家新一代信息技术发展战略重点不包括以下哪项":"共享经济",
