@@ -11,7 +11,7 @@
 (function() {
     'use strict'
     alert = console.log;
-    setTimeout((function(){console.log('Script Ready!')}),5000);
+    setTimeout(function(){console.log("Script Ready!");},5000);
     var qdict = {
         "技术预见注重技术发展本身对区域经济、环境和社会发展的影响":"正确",
         "技术预见方法中，情景分析法又名前景描述法/脚本法":"正确",
