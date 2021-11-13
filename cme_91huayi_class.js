@@ -6,12 +6,13 @@
 // @author       Acdtms4zfx
 // @match        http://*.91huayi.com/course_ware/*
 // @grant        none
+// @run-at       document-start
 // ==/UserScript==
 
 (function() {
     'use strict'
     alert = console.log;
-    setTimeout(function(){console.log("Script Ready!");},5000);
+    setTimeout(function(){console.log('cme_91huayi_class');},5000);
     var qdict = {
         "技术预见注重技术发展本身对区域经济、环境和社会发展的影响":"正确",
         "技术预见方法中，情景分析法又名前景描述法/脚本法":"正确",
@@ -112,13 +113,13 @@
                             console.log("Answer is found!");
                             document.querySelector("#video > div > div.pv-ask-modal-wrap > div > div.pv-ask-content.pv-ask-content-noimg > div.pv-ask-right > div > div:nth-child("+ i +") > label").click()
                             break AnsSelect;
-                        }
-                    }
-                }
-            }
+                        };
+                    };
+                };
+            };
             document.querySelector("#video > div > div.pv-ask-modal-wrap > div > div.pv-ask-foot > button.pv-ask-submit").click();
             document.querySelector("#video > div > div.pv-ask-modal-wrap.pv-ask-modal-answer > div > div.pv-ask-foot > button").click();
-        }
+        };
         document.querySelector("#jrks").click();
-    },2000);
+    },5000);
 })();
