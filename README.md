@@ -10,7 +10,7 @@
 2.下载油猴插件
 https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo
 
-3.导入三个脚本并启用
+3.导入四个js结尾的脚本并启用
 
 4.点开学习中的课，打开让他挂着(最好打开完停留在视频页面，千万不要切换到别的Tab)
 
