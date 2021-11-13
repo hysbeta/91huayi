@@ -11,7 +11,7 @@
 (function() {
     'use strict'
     alert = console.log;
-    setTimeout(function(){console.log("Script Ready!");},5000);
+    setTimeout(function(){console.log("cme_91huayi_exam");},5000);
     var qdict = {
         "《广东省数字经济发展规划（2018-2025年）》提出，广东省数字经济发展面临的形势包括以下哪些":"以上都是",
         "发达国家新一代信息技术发展战略重点不包括以下哪项":"共享经济",
@@ -41,7 +41,9 @@
         "在2021年全国两会期间，习近平总书记多次提及高质量发展，下列哪项不是习总书记的论述":"高质量发展不是中国一国的要求，而是全世界国家共同的要求",
         "根据应用场景的不同，机器人可以分为":"工业机器人和服务机器人",
         "广东省大学科技园建设问题较国内其他先进地区均有一定的差距，并与省内高水平大学建设要求及经济科技发展水平严重不符。（正确）":"正确",
-        "您是否已经学习完本课程":"是"
+        "您是否已经学习完本课程":"是",
+        "数据引发的新模式、新业态包括以下哪些":"以上都是",
+        "基于功能的数字平台可分为哪几类":"以上都是"
     };
     var qc = document.querySelector("#gvQuestion > tbody").childElementCount;
     for (var i=1;i<=qc;i++){
@@ -70,7 +72,5 @@
         };
     };
     document.querySelector("#btn_submit").click();
-    setTimeout( function(){
-    location.reload();
-    }, 5000);
+    setTimeout(function(){location.reload();},30000);
 })();
