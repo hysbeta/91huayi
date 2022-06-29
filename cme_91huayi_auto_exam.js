@@ -12,7 +12,7 @@
 // @require      https://cdn.bootcss.com/blueimp-md5/1.0.1/js/md5.min.js
 // @grant        none
 // ==/UserScript==
-// 抄的大神的代码，从52破解抄来的延时代码，每次尝试时间增加5秒等待，应该不会出验证码
+// 考试是抄的大神的代码，Sleep是从52破解抄来的延时代码，每次尝试时间增加5秒等待，应该不会出验证码
 
 (function() {
     'use strict';
