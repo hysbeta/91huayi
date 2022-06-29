@@ -9,6 +9,8 @@
 // @run-at       document-start
 // ==/UserScript==
 
+// 91华医 2021 公需课 科技创新现状与发展趋势 自动看 考试 下一节
+
 (function() {
     'use strict'
     alert = console.log;
