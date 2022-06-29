@@ -16,7 +16,7 @@
 
 (function() {
     'use strict';
-
+    var skip_class = "0"; // 如果需要自动跳过课程调成1
     function sleep(time, unit){
         if(time == null){time = 5000;}//我想不带参数的时候就默认5秒
         if(unit != null){time = time * 1000;}//我想这个参数是任意字符时，前面的就是秒，当然，真要在别处用，这里要再改改
@@ -79,8 +79,11 @@
     }else if(exam_result.test(currentURL)){
         handExamResult();
     }else if(course_ware.test(currentURL)){
-        // enableStartExam();
-        console.log("Disabled.")
+        if (skip_class=="0"){
+            console.log("已禁用跳过课程。");
+        }else{
+            enableStartExam();
+        }
     }
 
     //启用考试按钮
