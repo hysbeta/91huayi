@@ -13,19 +13,29 @@
 // @require      https://cdn.bootcss.com/blueimp-md5/1.0.1/js/md5.min.js
 // @grant        none
 // ==/UserScript==
-//忘了前几年抄的哪个大神的代码，保底用，当题库不足时瞎选答题。
-//问题是太频繁提交答案会出验证码，需要手动过验证。
 
 (function() {
     'use strict';
-    alert = console.log;
-    setTimeout(function(){console.log('cme_91huayi_auto_exam');},15000);
+
+    function sleep(time, unit){
+        if(time == null){time = 5000;}//我想不带参数的时候就默认5秒
+        if(unit != null){time = time * 1000;}//我想这个参数是任意字符时，前面的就是秒，当然，真要在别处用，这里要再改改
+        for(var t = Date.now();Date.now() - t <= time;);
+    }
+
+    sleep();
+    //http://cme3.91huayi.com/pages/exam.aspx?cwid=f0655634-01b1-4856-aabf-a4fe0187e4d8#
+    //http://cme3.91huayi.com/pages/exam_result.aspx?cwid=f0655634-01b1-4856-aabf-a4fe0187e4d8
+    //http://cme3.91huayi.com/course_ware/course_ware_cc.aspx
+
+    console.log('91huayi_auto_exam');
+
     //问题分隔符
     var strSplitArryQuestion = "@&"
     //答案前缀
     var prefixAnswer = "ANS_";
     //自动开始考试
-    var auto_start_exam = false;
+    var auto_start_exam = true;
     //自动提交
     var auto_submit = true;
     //自动重新考试
@@ -68,14 +78,14 @@
        main();
     }else if(exam_result.test(currentURL)){
         handExamResult();
-    //}else if(course_ware.test(currentURL)){
-        //enableStartExam();
+    }else if(course_ware.test(currentURL)){
+        enableStartExam();
     }
 
     //启用考试按钮
     function enableStartExam(){
         var btn_exam = $("#jrks");
-        btn_exam.attr('target','_blank')
+        btn_exam.attr('target','')
         //custom_player_stop();
         // console.log("enableStartExam");
         showExam(true);
@@ -84,11 +94,8 @@
             p.appendTo(btn_exam);
             setTimeout(() => {
                 p.trigger('click');
-            }, 1000);
+            }, 3000);
         }
-        setTimeout(() => {
-                window.close();
-        }, 10000);
     }
 
     function getAnswerIndex(key){
