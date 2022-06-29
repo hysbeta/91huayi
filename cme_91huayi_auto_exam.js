@@ -9,10 +9,10 @@
 // @match        *://*.91huayi.com/course_ware/course_ware_cc.aspx?*
 // @match        *://*.91huayi.com/pages/exam.aspx?*
 // @match        *://*.91huayi.com/pages/exam_result.aspx?*
-// @match        *://*.91huayi.com/course_ware/course_ware_polyv.aspx?*
 // @require      https://cdn.bootcss.com/blueimp-md5/1.0.1/js/md5.min.js
 // @grant        none
 // ==/UserScript==
+// 抄的大神的代码，从52破解抄来的延时代码，每次尝试时间增加5秒等待，应该不会出验证码
 
 (function() {
     'use strict';
@@ -79,7 +79,8 @@
     }else if(exam_result.test(currentURL)){
         handExamResult();
     }else if(course_ware.test(currentURL)){
-        enableStartExam();
+        // enableStartExam();
+        console.log("Disabled.")
     }
 
     //启用考试按钮
