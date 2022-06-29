@@ -3,7 +3,7 @@
 
 用法
 
-1.使Chrome浏览器 (我觉得其他支持油猴插件的浏览器都可以)
+1.使用Chrome浏览器 (我觉得其他支持油猴插件的浏览器都可以)
 
 2.下载油猴插件 (其他浏览器请自行搜索如何安装Tampermonkey)
 https://chrome.google.com/webstore/detail/dhdgffkkebhmkfjojejmpbldmpobfkfo
