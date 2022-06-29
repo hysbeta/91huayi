@@ -89,7 +89,7 @@
     //启用考试按钮
     function enableStartExam(){
         var btn_exam = $("#jrks");
-        btn_exam.attr('target','_self')
+        // btn_exam.attr('target','_self')
         //custom_player_stop();
         // console.log("enableStartExam");
         showExam(true);
