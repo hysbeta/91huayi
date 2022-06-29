@@ -103,7 +103,6 @@
             document.querySelector("#video > div > div.pv-ask-modal-wrap > div > div.pv-ask-foot > button.pv-ask-submit").click();
             document.querySelector("#video > div > div.pv-ask-modal-wrap.pv-ask-modal-answer > div > div.pv-ask-foot > button").click();
         };
-        document.querySelector("#jrks").attr('target','')
         document.querySelector("#jrks").click();
     },5000);
 })();
