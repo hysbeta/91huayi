@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         cme_91huayi_auto_exam
-// @namespace    http://tampermonkey.net/
-// @version      0.1
+// @namespace    https://github.com/hysbeta/91huayi/blob/master/cme_91huayi_auto_exam.js
+// @version      1.0
 // @description  try to take over the world!
 // @author       You
 // @match        *://*.91huayi.com/pages/exam.aspx?*
