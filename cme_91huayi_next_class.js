@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         cme_91huayi_next_class
-// @namespace    http://tampermonkey.net/
-// @version      0.1
+// @namespace    https://github.com/hysbeta/91huayi/blob/master/cme_91huayi_next_class.js
+// @version      1.0
 // @description  try to take over the world!
 // @author       Acdtms4zfx
 // @match        http://*.91huayi.com/pages/exam_result.aspx*
