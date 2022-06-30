@@ -78,7 +78,6 @@
         "规定的内容包括数据活动安全要求、信息无障碍建设、数据财产权益":"正确",
         "规定对新技术、新产业、新业态、新模式等实行包容审慎监":"正确"
     };
-    sleep();
     var fuc = setInterval(function() {
         if (document.querySelector("#video > div > div.pv-ask-modal-wrap > div > div.pv-ask-content.pv-ask-content-noimg > div.pv-ask-right > div > h3")){
             var QuestionContent = document.querySelector("#video > div > div.pv-ask-modal-wrap > div > div.pv-ask-content.pv-ask-content-noimg > div.pv-ask-right > div > h3").textContent;
