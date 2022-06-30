@@ -19,11 +19,10 @@
     alert = console.log;
     var skip_class = "1"; // 如果需要自动跳过课程调成1
     function sleep(time, unit){
-        if(time == null){time = 10000;}//我想不带参数的时候就默认5秒
+        if(time == null){time = 10000;}//我想不带参数的时候就默认10秒
         if(unit != null){time = time * 1000;}//我想这个参数是任意字符时，前面的就是秒，当然，真要在别处用，这里要再改改
         for(var t = Date.now();Date.now() - t <= time;);
     }
-
     sleep();
     //http://cme3.91huayi.com/pages/exam.aspx?cwid=f0655634-01b1-4856-aabf-a4fe0187e4d8#
     //http://cme3.91huayi.com/pages/exam_result.aspx?cwid=f0655634-01b1-4856-aabf-a4fe0187e4d8
