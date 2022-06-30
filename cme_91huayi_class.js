@@ -105,5 +105,5 @@
             document.querySelector("#video > div > div.pv-ask-modal-wrap.pv-ask-modal-answer > div > div.pv-ask-foot > button").click();
         };
         document.querySelector("#jrks").click();
-    },1000);
+    },10000);
 })();
