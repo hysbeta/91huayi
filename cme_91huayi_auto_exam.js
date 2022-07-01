@@ -79,10 +79,14 @@
         if (skip_class=="0"){
             console.log("已禁用跳过课程。");
         }else{
-            if (banSeek=="off"){
-                enableStartExam();
-            } else {
-                console.log("该课程不能跳过。");
+            if (typeof(banSeek)=="undefined"){
+                console.log("无法判断是否能自动跳过课程，请自己尝试。");
+            }else{
+                if (banSeek=="off"){
+                    enableStartExam();
+                } else {
+                    console.log("该课程不能跳过。");
+                }
             }
         }
     }
