@@ -7,6 +7,7 @@
 // @match        *://*.91huayi.com/pages/exam.aspx?*
 // @match        *://*.91huayi.com/pages/exam_result.aspx?*
 // @match        *://*.91huayi.com/course_ware/course_ware_cc.aspx?*
+// @match        *://*.91huayi.com/course_ware/course_ware_polyv.aspx?*
 // @match        *://*.91huayi.com/pages/exam.aspx?*
 // @match        *://*.91huayi.com/pages/exam_result.aspx?*
 // @require      https://cdn.bootcss.com/blueimp-md5/1.0.1/js/md5.min.js
@@ -17,6 +18,7 @@
 (function() {
     'use strict';
     alert = console.log;
+    console.log('91huayi_auto_exam');
     var skip_class = "1"; // 如果需要自动跳过课程调成1
     function sleep(time, unit){
         if(time == null){time = 10000;}//我想不带参数的时候就默认10秒
@@ -24,11 +26,6 @@
         for(var t = Date.now();Date.now() - t <= time;);
     }
     sleep();
-    //http://cme3.91huayi.com/pages/exam.aspx?cwid=f0655634-01b1-4856-aabf-a4fe0187e4d8#
-    //http://cme3.91huayi.com/pages/exam_result.aspx?cwid=f0655634-01b1-4856-aabf-a4fe0187e4d8
-    //http://cme3.91huayi.com/course_ware/course_ware_cc.aspx
-
-    console.log('91huayi_auto_exam');
 
     //问题分隔符
     var strSplitArryQuestion = "@&"
@@ -82,7 +79,11 @@
         if (skip_class=="0"){
             console.log("已禁用跳过课程。");
         }else{
-            enableStartExam();
+            if (banSeek=="off"){
+                enableStartExam();
+            } else {
+                console.log("该课程不能跳过。");
+            }
         }
     }
 
