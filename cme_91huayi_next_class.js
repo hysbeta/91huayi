@@ -4,13 +4,14 @@
 // @version      1.0
 // @description  try to take over the world!
 // @author       Acdtms4zfx
-// @match        http://*.91huayi.com/pages/exam_result.aspx*
+// @match        *://*.91huayi.com/pages/exam_result.aspx*
 // @grant        none
 // ==/UserScript==
 
 (function() {
     'use strict'
     alert = console.log;
+    console.log('91huayi_next_class');
     function sleep(time, unit){
         if(time == null){time = 10000;}//我想不带参数的时候就默认10秒
         if(unit != null){time = time * 1000;}//我想这个参数是任意字符时，前面的就是秒，当然，真要在别处用，这里要再改改
