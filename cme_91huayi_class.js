@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         cme_91huayi_class
-// @namespace    https://github.com/hysbeta/91huayi/blob/master/cme_91huayi_auto_exam.js
-// @version      1.0
+// @namespace    http://tampermonkey.net/
+// @version      0.1
 // @description  try to take over the world!
 // @author       Acdtms4zfx
 // @match        http://*.91huayi.com/course_ware/*
@@ -76,7 +76,11 @@
         "个人要求个人信息处理者对其个人信息处理规则进行解释说明的，如果解释说明涉及商业秘密的，个人信息处理者可以拒绝。":"正确",
         "个人信息处理者处理不满十四周岁未成年人个人信息的，应当取得未成年人的父母或者其他监护人的同意":"正确",
         "规定的内容包括数据活动安全要求、信息无障碍建设、数据财产权益":"正确",
-        "规定对新技术、新产业、新业态、新模式等实行包容审慎监":"正确"
+        "规定对新技术、新产业、新业态、新模式等实行包容审慎监":"正确",
+        "三次产业数字化发展深入推进":"错误",
+        "虚拟人是一类以真实存在的，具有人类的外观、行为、甚至思想特征的机器人":"错误",
+        "2020年产业数字化在数字经济内部地位进一步巩固":"正确",
+        "元宇宙融合了互联网、游戏、社交网络和虚拟技术等技术，造就了一种全新的、身临其境的数字生活":"正确"
     };
     var fuc = setInterval(function() {
         if (document.querySelector("#video > div > div.pv-ask-modal-wrap > div > div.pv-ask-content.pv-ask-content-noimg > div.pv-ask-right > div > h3")){
@@ -104,5 +108,5 @@
             document.querySelector("#video > div > div.pv-ask-modal-wrap.pv-ask-modal-answer > div > div.pv-ask-foot > button").click();
         };
         document.querySelector("#jrks").click();
-    },10000);
+    },5000);
 })();
