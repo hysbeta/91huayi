@@ -14,7 +14,7 @@
 (function() {
     'use strict'
     alert = console.log;
-    console.log('91huayi_auto_exam');
+    console.log('91huayi_auto_class');
     var qdict = {
         "我国国民经济和社会发展第十四个五年规划":"正确",
         "第二次信息革命代表性是英国的":"错误",
