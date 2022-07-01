@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         cme_91huayi_class
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      1.0
 // @description  try to take over the world!
 // @author       Acdtms4zfx
-// @match        http://*.91huayi.com/course_ware/*
+// @match        *://*.91huayi.com/course_ware/*
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
@@ -14,6 +14,7 @@
 (function() {
     'use strict'
     alert = console.log;
+    console.log('91huayi_auto_exam');
     var qdict = {
         "我国国民经济和社会发展第十四个五年规划":"正确",
         "第二次信息革命代表性是英国的":"错误",
