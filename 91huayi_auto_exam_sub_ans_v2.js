@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';//写cookies
+    'use strict';
     alert = console.log;
     console.log('91huayi_auto_exam_sub_ans_v2');
     function sleep(time, unit){
