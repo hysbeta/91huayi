@@ -11,9 +11,10 @@
 (function() {
     'use strict';//写cookies
     alert = console.log;
+    var wait_time=6;
     console.log('91huayi_auto_exam_chk_ans_v2');
     function sleep(time, unit){
-        if(time == null){time = 15000;}
+        if(time == null){time = wait_time * 1000;}
         if(unit != null){time = time * 1000;}
         for(var t = Date.now();Date.now() - t <= time;);
     }
@@ -101,9 +102,9 @@
         delCookie("sub_ans");
         delCookie("correct_ans");
         delCookie("wrong_ans");
+        console.log("Congratulations! We will move to next class in "+wait_time+"s...");
         for (j=1;j<=document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul").childElementCount;j++){
             if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > input").value=="立即学习"){
-                console.log("Congratulations! We will move to next class in 15s...");
                 console.log("Next:"+document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > p").title);
                 sleep();
                 document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > input").click();
@@ -111,16 +112,12 @@
             };
         }
     }else{
-        console.log("Oh... We will take the exam again in 15s...");
+        console.log("Oh... We will take the exam again in "+wait_time+"s...");
         delCookie("sub_ans");
         setCookie("correct_ans",JSON.stringify(correct_ans),"s300");
         setCookie("wrong_ans",JSON.stringify(wrong_ans),"s300");
         sleep();
         document.querySelector("#ctl00 > div.state_container > div.state_cent_box > div.state_foot > input:nth-child(2)").click();
     };
-    if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > div.state_foot > input:nth-child(1)").value!="申请证书"){
-        setTimeout(function(){location.reload();},5000);
-    }else{
-        console.log("Congratulations! It's all done~");
-    }
+    setTimeout(function(){location.reload();},wait_time * 1000);
 })();
