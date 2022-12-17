@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
+    'use strict';//写cookies
     alert = console.log;
     console.log('91huayi_auto_exam_chk_ans_v2');
     function sleep(time, unit){
@@ -80,7 +80,7 @@
     for (i=1;i<=document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul").childElementCount;i++){
         wrong_questions.push(document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+i+") > p").textContent);
     }
-    console.log(wrong_questions);
+    //console.log(wrong_questions);
     for (key in sub_ans) {
         console.log("Q:"+key);
         if (wrong_questions.indexOf(key) != -1){
@@ -94,9 +94,9 @@
             console.log("Correct answer -> "+sub_ans[key]);
         };
     };
-    console.log(sub_ans);
-    console.log(correct_ans);
-    console.log(wrong_ans);
+    //console.log(sub_ans);
+    //console.log(correct_ans);
+    //console.log(wrong_ans);
     if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > div.state_tips > p").textContent=="考试通过"){
         delCookie("sub_ans");
         delCookie("correct_ans");
