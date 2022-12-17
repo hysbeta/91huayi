@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
+    'use strict';//写cookies
     alert = console.log;
     console.log('91huayi_auto_exam_sub_ans_v2');
     function sleep(time, unit){
@@ -70,8 +70,8 @@
     }else{
         var wrong_ans = JSON.parse(getCookie("wrong_ans"));
     };
-    console.log(correct_ans);
-    console.log(wrong_ans);
+    //console.log(correct_ans);
+    //console.log(wrong_ans);
     var i, j, question_text, ans_text;
     var sub_ans = {};
     for (i=2;i<=document.querySelector("#gvQuestion > tbody").childElementCount;i++){
@@ -83,7 +83,7 @@
                     document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2) > tbody > tr:nth-child("+j+") > td > input").click();
                     ans_text=document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2) > tbody > tr:nth-child("+j+") > td").textContent
                     sub_ans[question_text]=ans_text;
-                    console.log("Already have correct answer for this question ->"+ans_text)
+                    console.log("Already have correct answer for this question -> "+ans_text)
                     break;
                 }
             }
@@ -93,7 +93,7 @@
                     document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2) > tbody > tr:nth-child("+j+") > td > input").click();
                     ans_text=document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2) > tbody > tr:nth-child("+j+") > td").textContent
                     sub_ans[question_text]=ans_text;
-                    console.log("Only have wrong answer for this question, try ->"+ans_text)
+                    console.log("Only have wrong answer for this question, try -> "+ans_text)
                     break;
                 }
             }
@@ -101,13 +101,12 @@
             document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2) > tbody > tr:nth-child(1) > td > input").click();
             ans_text=document.querySelector("#gvQuestion > tbody > tr:nth-child("+i+") > td > table:nth-child(2) > tbody > tr:nth-child(1) > td").textContent
             sub_ans[question_text]=ans_text;
-            console.log("First time meet this question, try ->"+ans_text)
+            console.log("First time meet this question, try -> "+ans_text)
         }
     };
-    console.log(sub_ans);
+    //console.log(sub_ans);
     setCookie("sub_ans",JSON.stringify(sub_ans),"s300")
     sleep();
     document.querySelector("#btn_submit").click();
     setTimeout(function(){location.reload();},5000);
-
 })();
