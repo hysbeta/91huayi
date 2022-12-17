@@ -121,6 +121,6 @@
     if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > div.state_foot > input:nth-child(1)").value!="申请证书"){
         setTimeout(function(){location.reload();},5000);
     }else{
-        console.log("Congratulations! It's all done~")
+        console.log("Congratulations! It's all done~");
     }
 })();
