@@ -11,9 +11,10 @@
 (function() {
     'use strict';//写cookies
     alert = console.log;
+    var wait_time=6;
     console.log('91huayi_auto_exam_sub_ans_v2');
     function sleep(time, unit){
-        if(time == null){time = 15000;}
+        if(time == null){time = wait_time * 1000;}
         if(unit != null){time = time * 1000;}
         for(var t = Date.now();Date.now() - t <= time;);
     }
@@ -108,5 +109,5 @@
     setCookie("sub_ans",JSON.stringify(sub_ans),"s300")
     sleep();
     document.querySelector("#btn_submit").click();
-    setTimeout(function(){location.reload();},5000);
+    setTimeout(function(){location.reload();},wait_time * 1000);
 })();
