@@ -15,6 +15,7 @@
     'use strict'
     alert = console.log;
     console.log('91huayi_auto_class_v2');
+    var wait_time=10;
     function enableStartExam(){
         var btn_exam = $("#jrks");
         showExam(true);
@@ -22,10 +23,10 @@
         p.appendTo(btn_exam);
         setTimeout(() => {
             p.trigger('click');
-        }, 3000);
+        }, wait_time);
     }
     function sleep(time, unit){
-        if(time == null){time = 15000;}
+        if(time == null){time = wait_time * 1000;}
         if(unit != null){time = time * 1000;}
         for(var t = Date.now();Date.now() - t <= time;);
     }
@@ -126,5 +127,5 @@
             document.querySelector("#video > div > div.pv-ask-modal-wrap.pv-ask-modal-answer > div > div.pv-ask-foot > button").click();
         };
         document.querySelector("#jrks").click();
-    },5000);
+    },wait_time * 1000);
 })();
