@@ -8,12 +8,13 @@
 // @grant        none
 // ==/UserScript==
 
-// 91华医 2022年公需课：数字化转型与产业创新发展
+// 公需课 ： 91华医 2022年 数字化转型与产业创新发展
+// 选修课 ： 自动尝试跳过
 
 (function() {
     'use strict'
     alert = console.log;
-    console.log('91huayi_auto_class_req_v2');
+    console.log('91huayi_auto_class_v2');
     function enableStartExam(){
         var btn_exam = $("#jrks");
         showExam(true);
