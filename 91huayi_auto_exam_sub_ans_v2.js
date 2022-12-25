@@ -9,9 +9,9 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';//写cookies
+    'use strict';
     alert = console.log;
-    var wait_time=6;
+    var wait_time=10;
     console.log('91huayi_auto_exam_sub_ans_v2');
     function sleep(time, unit){
         if(time == null){time = wait_time * 1000;}
