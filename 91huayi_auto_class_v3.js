@@ -32,7 +32,6 @@
     }
     sleep();
     var fuc = setInterval(function() {
-        closeBangZhu();
         if (typeof(banSeek)=="undefined"){
             console.log("无法判断是否能自动跳过课程，请自己尝试。");
         }else{
@@ -40,6 +39,8 @@
                 enableStartExam();
             };
         };
+        document.querySelector("#video > div > div.pv-video-wrap > video").play();
+        closeBangZhu();
         if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div:nth-child(3) > button").className.indexOf('pv-icon-volumeon') != -1){
             document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div:nth-child(3) > button").click();
         };
