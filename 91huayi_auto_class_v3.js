@@ -39,20 +39,19 @@
                 enableStartExam();
             };
         };
+        document.querySelector("#video > div > div.pv-video-wrap > video").muted=true;
         document.querySelector("#video > div > div.pv-video-wrap > video").play();
         closeBangZhu();
+        if (document.querySelector("#video > div > div.pv-ask-modal-wrap") != null){
+            document.querySelector("#video > div > div.pv-ask-modal-wrap").remove();
+        };
         if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div:nth-child(3) > button").className.indexOf('pv-icon-volumeon') != -1){
             document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div:nth-child(3) > button").click();
         };
-        if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").className.indexOf('pv-icon-btn-play') != -1){
-            document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").click();
-        };
         initialSign();
         document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span").click();
-        if (document.querySelector("#video > div > div.pv-ask-modal-wrap > div > div.pv-ask-content.pv-ask-content-noimg > div.pv-ask-right > div > h3")){
-            document.querySelector("#video > div > div.pv-ask-modal-wrap > div > div.pv-ask-foot > button.pv-ask-skip.pv-hide").click();
-            initialSign();
-            document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span").click();
+        if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").className.indexOf('pv-icon-btn-play') != -1){
+            document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").click();
         };
         document.querySelector("#jrks").click();
     },wait_time * 1000);
