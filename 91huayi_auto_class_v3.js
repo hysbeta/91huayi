@@ -40,6 +40,7 @@
             };
         };
         document.querySelector("#video > div > div.pv-video-wrap > video").muted=true; //启用未交互后台播放
+        document.querySelector("#video > div > div.pv-video-wrap > video").volume=0; //播放器静音
         document.querySelector("#video > div > div.pv-video-wrap > video").play(); //播放
         closeBangZhu(); //关闭提示弹窗
         if (document.querySelector("#video > div > div.pv-line-tips") != null){
@@ -50,14 +51,11 @@
         }; //清除问题
         if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div:nth-child(3) > button").className.indexOf('pv-icon-volumeon') != -1){
             document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div:nth-child(3) > button").click();
-        }; //静音
+        }; //播放按钮静音
         initialSign(); //调用签到保活（保持播放）
         while (document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span") != null){
             document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span").click();
         }; //签到
-        //if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").className.indexOf('pv-icon-btn-play') != -1){
-        //    document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").click();
-        //}; //暂停续播
         document.querySelector("#jrks").click();
     },wait_time * 1000);
 })();
