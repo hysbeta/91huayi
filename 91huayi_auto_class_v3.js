@@ -10,7 +10,6 @@
 
 // 公需课 ： 自动尝试跳过问题
 // 选修课 ： 自动尝试跳过课程
-// 这是一个测试版本 试试能不能硬冲跳过公需课课间问题
 
 (function() {
     'use strict'
@@ -41,7 +40,10 @@
                 enableStartExam();
             };
         };
-        if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").className.indexOf('pv-icon-pause') != -1){
+        if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div:nth-child(3) > button").className.indexOf('pv-icon-volumeon') != -1){
+            document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div:nth-child(3) > button").click();
+        };
+        if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").className.indexOf('pv-icon-btn-play') != -1){
             document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-left > button").click();
         };
         initialSign();
