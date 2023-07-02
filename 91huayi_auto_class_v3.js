@@ -40,8 +40,8 @@
             };
         };
         document.querySelector("#video > div > div.pv-video-wrap > video").muted=true; //启用未交互后台播放
-        document.querySelector("#video > div > div.pv-video-wrap > video").volume=0; //播放器静音
         document.querySelector("#video > div > div.pv-video-wrap > video").play(); //播放
+        document.querySelector("#video > div > div.pv-video-wrap > video").volume=0; //播放器静音
         closeBangZhu(); //关闭提示弹窗
         if (document.querySelector("#video > div > div.pv-line-tips") != null){
             document.querySelector("#video > div > div.pv-line-tips > a").click();
