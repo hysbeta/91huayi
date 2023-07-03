@@ -22,5 +22,4 @@
     document.querySelector("#xingxing > dd:nth-child(5)").click();
     document.querySelector("#OkNext").click();
     document.querySelector("#layui-layer1 > div.layui-layer-btn > a").click();
-    // Your code here...
 })();
