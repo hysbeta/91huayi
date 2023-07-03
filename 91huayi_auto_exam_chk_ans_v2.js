@@ -9,9 +9,9 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
+    'use strict';//写cookies
     alert = console.log;
-    var wait_time=10;
+    var wait_time=6;
     console.log('91huayi_auto_exam_chk_ans_v2');
     function sleep(time, unit){
         if(time == null){time = wait_time * 1000;}
@@ -46,35 +46,32 @@
     function getCookie(name)
     {
         var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-
-        if(arr=document.cookie.match(reg))
-
+        if(arr=document.cookie.match(reg)){
             return unescape(arr[2]);
-        else
+        }else{
             return null;
+        };
     }
     function delCookie(name)
     {
         var exp = new Date();
         exp.setTime(exp.getTime() - 1);
         var cval=getCookie(name);
-        if(cval!=null)
+        if(cval!=null){
             document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+        };
     }
-    if (getCookie("sub_ans")==null){
-        var sub_ans = {};
-    }else{
-        var sub_ans = JSON.parse(getCookie("sub_ans"));
+    var sub_ans = {};
+    var correct_ans = {};
+    var wrong_ans = {};
+    if (getCookie("sub_ans")!=null){
+        sub_ans = JSON.parse(getCookie("sub_ans"));
     };
-    if (getCookie("correct_ans")==null){
-        var correct_ans = {};
-    }else{
-        var correct_ans = JSON.parse(getCookie("correct_ans"));
+    if (getCookie("correct_ans")!=null){
+        correct_ans = JSON.parse(getCookie("correct_ans"));
     };
-    if (getCookie("wrong_ans")==null){
-        var wrong_ans = {};
-    }else{
-        var wrong_ans = JSON.parse(getCookie("wrong_ans"));
+    if (getCookie("wrong_ans")!=null){
+        wrong_ans = JSON.parse(getCookie("wrong_ans"));
     };
     var i, j, key, wrong_questions;
     wrong_questions = [];
@@ -102,8 +99,10 @@
         delCookie("sub_ans");
         delCookie("correct_ans");
         delCookie("wrong_ans");
+        var finish_state=true;
         for (j=1;j<=document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul").childElementCount;j++){
             if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > input").value=="立即学习"){
+                finish_state=false;
                 console.log("Congratulations! We will move to next class in "+wait_time+"s...");
                 console.log("Next:"+document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > p").title);
                 sleep();
@@ -123,5 +122,8 @@
         setTimeout(function(){location.reload();},wait_time * 1000);
     }else{
         console.log("Congratulations! It's all done~");
+        if (finish_state){
+            document.querySelector("#ctl00 > div.tan_box > div.but_item > button").click();
+        };
     }
 })();
