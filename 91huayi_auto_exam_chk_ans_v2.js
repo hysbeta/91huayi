@@ -102,8 +102,10 @@
         delCookie("sub_ans");
         delCookie("correct_ans");
         delCookie("wrong_ans");
+        var finish_state=true;
         for (j=1;j<=document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul").childElementCount;j++){
             if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > input").value=="立即学习"){
+                var finish_state=false;
                 console.log("Congratulations! We will move to next class in "+wait_time+"s...");
                 console.log("Next:"+document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > p").title);
                 sleep();
@@ -123,5 +125,8 @@
         setTimeout(function(){location.reload();},wait_time * 1000);
     }else{
         console.log("Congratulations! It's all done~");
+        if (finish_state){
+            document.querySelector("#ctl00 > div.tan_box > div.but_item > button").click();
+        };
     }
 })();
