@@ -9,9 +9,9 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';//写cookies
+    'use strict';
     alert = console.log;
-    var wait_time=6;
+    var wait_time=10;
     console.log('91huayi_auto_exam_sub_ans_v2');
     function sleep(time, unit){
         if(time == null){time = wait_time * 1000;}
@@ -46,29 +46,33 @@
     function getCookie(name)
     {
         var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-        if(arr=document.cookie.match(reg)){
+
+        if(arr=document.cookie.match(reg))
+
             return unescape(arr[2]);
-        } else{
+        else
             return null;
-        };
     }
     function delCookie(name)
     {
         var exp = new Date();
         exp.setTime(exp.getTime() - 1);
         var cval=getCookie(name);
-        if(cval!=null){
+        if(cval!=null)
             document.cookie= name + "="+cval+";expires="+exp.toGMTString();
-        };
     }
-    var correct_ans = {};
-    var wrong_ans = {};
     if (getCookie("correct_ans")==null){
-        correct_ans = JSON.parse(getCookie("correct_ans"));
+        var correct_ans = {};
+    }else{
+        var correct_ans = JSON.parse(getCookie("correct_ans"));
     };
     if (getCookie("wrong_ans")==null){
-        wrong_ans = JSON.parse(getCookie("wrong_ans"));
+        var wrong_ans = {};
+    }else{
+        var wrong_ans = JSON.parse(getCookie("wrong_ans"));
     };
+    //console.log(correct_ans);
+    //console.log(wrong_ans);
     var i, j, question_text, ans_text;
     var sub_ans = {};
     for (i=2;i<=document.querySelector("#gvQuestion > tbody").childElementCount;i++){
