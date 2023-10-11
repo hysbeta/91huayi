@@ -74,6 +74,11 @@
         while (document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span") != null){
             document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span").click();
         }; //签到
+        //Skip video, use at you own risk!!!
+        //showExam(true);
+        //delCookie("playState");
+        //addCourseWarePlayRecord();
+        //Skip video, use at you own risk!!!
         document.querySelector("#jrks").click();
     },wait_time * 1000);
 })();
