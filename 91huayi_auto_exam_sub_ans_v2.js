@@ -18,12 +18,9 @@
         if(unit != null){time = time * 1000;}
         for(var t = Date.now();Date.now() - t <= time;);
     }
-    function setCookie(name,value,time)
+    function setlocalStorage(name,value)
     {
-        var strsec = getsec(time);
-        var exp = new Date();
-        exp.setTime(exp.getTime() + strsec*1);
-        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+        localStorage.setItem(name,escape(value));
     }
     function getsec(str)
     {
@@ -43,36 +40,30 @@
             return str1*24*60*60*1000;
         }
     }
-    function getCookie(name)
+    function getlocalStorage(name)
     {
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-
-        if(arr=document.cookie.match(reg))
-
-            return unescape(arr[2]);
-        else
+        if(localStorage.getItem(name)!=null){
+            return unescape(localStorage.getItem(name));
+        }else{
             return null;
+        }
     }
-    function delCookie(name)
+    function dellocalStorage(name)
     {
-        var exp = new Date();
-        exp.setTime(exp.getTime() - 1);
-        var cval=getCookie(name);
-        if(cval!=null)
-            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+       localStorage.removeItem(name);
     }
-    if (getCookie("correct_ans")==null){
+    if (getlocalStorage("correct_ans")==null){
         var correct_ans = {};
     }else{
-        var correct_ans = JSON.parse(getCookie("correct_ans"));
+        var correct_ans = JSON.parse(getlocalStorage("correct_ans"));
     };
-    if (getCookie("wrong_ans")==null){
+    if (getlocalStorage("wrong_ans")==null){
         var wrong_ans = {};
     }else{
-        var wrong_ans = JSON.parse(getCookie("wrong_ans"));
+        var wrong_ans = JSON.parse(getlocalStorage("wrong_ans"));
     };
-    //console.log(correct_ans);
-    //console.log(wrong_ans);
+    console.log("correct_ans:"+JSON.stringify(correct_ans));
+    console.log("wrong_ans:"+JSON.stringify(wrong_ans));
     var i, j, question_text, ans_text;
     var sub_ans = {};
     for (i=2;i<=document.querySelector("#gvQuestion > tbody").childElementCount;i++){
@@ -105,8 +96,8 @@
             console.log("First time meet this question, try -> "+ans_text)
         }
     };
-    //console.log(sub_ans);
-    setCookie("sub_ans",JSON.stringify(sub_ans),"s300")
+    console.log("sub_ans:"+JSON.stringify(sub_ans));
+    setlocalStorage("sub_ans",JSON.stringify(sub_ans))
     sleep();
     document.querySelector("#btn_submit").click();
     setTimeout(function(){location.reload();},wait_time * 1000);
