@@ -2,15 +2,16 @@
 // @name         91huayi_auto_class_v3
 // @namespace    http://tampermonkey.net/
 // @version      3.0
-// @description  try to take over the world!
+// @description  91huayi_auto_class
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
 // @grant        none
+// @license      CC BY-NC-ND 2.0 DEED
 // ==/UserScript==
-
+ 
 // 公需课 ： 自动尝试跳过问题
 // 选修课 ： 自动尝试跳过课程
-
+ 
 (function() {
     'use strict'
     alert = console.log;
