@@ -2,10 +2,11 @@
 // @name         91huayi_auto_exam_sub_ans_v2
 // @namespace    http://tampermonkey.net/
 // @version      2.0
-// @description  try to take over the world!
+// @description  91huayi_auto_exam_sub_ans
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/exam.aspx?*
 // @grant        none
+// @license      CC BY-NC-ND 2.0 DEED
 // ==/UserScript==
 
 (function() {
