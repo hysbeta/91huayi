@@ -1,11 +1,12 @@
 // ==UserScript==
-// @name         91huayi_auto_ranking_v2
+// @name         91huayi_auto_ranking
 // @namespace    http://tampermonkey.net/
 // @version      2.0
-// @description  try to take over the world!
+// @description  91huayi_auto_ranking_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/course_evaluate.aspx?*
 // @grant        none
+// @license      CC BY-NC-ND 2.0 DEED
 // ==/UserScript==
 
 (function() {
