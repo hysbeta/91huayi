@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_exam_chk_ans
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      1.0
 // @description  91huayi_auto_exam_chk_ans_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/exam_result.aspx?*
