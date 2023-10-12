@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_class
 // @namespace    http://tampermonkey.net/
-// @version      3.0
+// @version      1.0
 // @description  91huayi_auto_class_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
