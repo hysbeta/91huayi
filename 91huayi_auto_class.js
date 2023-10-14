@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         91huayi_auto_class
+// @name         91huayi_auto_class(91华医公需课选修课视频考试我全都要)
 // @namespace    http://tampermonkey.net/
 // @version      1.1
 // @description  91huayi_auto_class_
