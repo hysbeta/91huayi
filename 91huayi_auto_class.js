@@ -8,7 +8,7 @@
 // @grant        none
 // @license      CC BY-NC-ND 2.0 DEED
 // ==/UserScript==
- 
+// 不知道哪里出了问题，不能跳过课程了，先不要用跳过课程。。。
 // 公需课 ： 自动尝试跳过问题
 // 选修课 ： 自动尝试跳过课程
  
@@ -33,13 +33,13 @@
     }
     sleep();
     var fuc = setInterval(function() {
-        if (typeof(banSeek)=="undefined"){
-            console.log("无法判断是否能自动跳过课程，请自己尝试。");
-        }else{
-            if (banSeek=="off"){
-                enableStartExam();
-            };
-        };
+        //if (typeof(banSeek)=="undefined"){
+        //    console.log("无法判断是否能自动跳过课程，请自己尝试。");
+        //}else{
+        //    if (banSeek=="off"){
+        //        enableStartExam();
+        //    };
+        //};
         document.querySelector("#video > div > div.pv-video-wrap > video").muted=true; //启用未交互后台播放
         document.querySelector("#video > div > div.pv-video-wrap > video").play(); //播放
         document.querySelector("#video > div > div.pv-video-wrap > video").volume=0; //播放器静音
