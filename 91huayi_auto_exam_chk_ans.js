@@ -19,6 +19,10 @@
         if(unit != null){time = time * 1000;}
         for(var t = Date.now();Date.now() - t <= time;);
     }
+    sleep();
+    if (document.querySelector("body").textContent.search("应用程序中的服务器错误。") != -1 && document.querySelector("body").textContent.search("运行时错误") != -1){
+        setTimeout(function(){location.reload();},wait_time * 1000);
+    };
     function setlocalStorage(name,value)
     {
         localStorage.setItem(name,escape(value));
@@ -102,7 +106,6 @@
                 var finish_state=false;
                 console.log("Congratulations! We will move to next class in "+wait_time+"s...");
                 console.log("Next:"+document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > p").title);
-                sleep();
                 document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > input").click();
                 break;
             };
@@ -112,7 +115,6 @@
         dellocalStorage("sub_ans");
         setlocalStorage("correct_ans",JSON.stringify(correct_ans));
         setlocalStorage("wrong_ans",JSON.stringify(wrong_ans));
-        sleep();
         document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(2)").click();
     };
     if (document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(1)").value!="申请证书"){
