@@ -20,6 +20,9 @@
         for(var t = Date.now();Date.now() - t <= time;);
     };
     sleep();
+    if (document.querySelector("body").textContent.search("应用程序中的服务器错误。") != -1 && document.querySelector("body").textContent.search("运行时错误") != -1){
+        setTimeout(function(){location.reload();},wait_time * 1000);
+    };
     document.querySelector("#xingxing > dd:nth-child(5)").click();
     document.querySelector("#OkNext").click();
     document.querySelector("#layui-layer1 > div.layui-layer-btn > a").click();
