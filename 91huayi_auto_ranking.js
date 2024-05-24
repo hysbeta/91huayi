@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_ranking
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.2
 // @description  91huayi_auto_ranking_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/course_evaluate.aspx?*
