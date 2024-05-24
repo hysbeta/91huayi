@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_exam_sub_ans
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.2
 // @description  91huayi_auto_exam_sub_ans_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/exam.aspx?*
@@ -53,6 +53,10 @@
     {
        localStorage.removeItem(name);
     }
+    sleep();
+    if (document.querySelector("body").textContent.search("应用程序中的服务器错误。") != -1 && document.querySelector("body").textContent.search("运行时错误") != -1){
+        setTimeout(function(){location.reload();},wait_time * 1000);
+    };
     if (getlocalStorage("correct_ans")==null){
         var correct_ans = {};
     }else{
@@ -99,7 +103,6 @@
     };
     console.log("sub_ans:"+JSON.stringify(sub_ans));
     setlocalStorage("sub_ans",JSON.stringify(sub_ans))
-    sleep();
     document.querySelector("#btn_submit").click();
     setTimeout(function(){location.reload();},wait_time * 1000);
 })();
