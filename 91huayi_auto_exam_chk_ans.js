@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_exam_chk_ans
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  91huayi_auto_exam_chk_ans_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/exam_result.aspx?*
@@ -70,9 +70,9 @@
     };
     var i, j, key, wrong_questions;
     wrong_questions = [];
-    for (i=1;i<=document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul").childElementCount;i++){
+    for (i=1;i<=document.querySelector("#ctl00 > div.container > div > div.cent_box > ul").childElementCount;i++){
         //wrong_questions.push(document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+i+") > p").textContent);
-        wrong_questions.push(document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+i+") > p").getAttribute("title"));
+        wrong_questions.push(document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+i+") > p").getAttribute("title"));
     }
     console.log("wrong_questions:"+JSON.stringify(wrong_questions));
     console.log("sub_ans:"+JSON.stringify(sub_ans));
@@ -92,18 +92,18 @@
     console.log("sub_ans:"+JSON.stringify(sub_ans));
     console.log("correct_ans:"+JSON.stringify(correct_ans));
     console.log("wrong_ans:"+JSON.stringify(wrong_ans));
-    if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > div.state_tips > p").textContent=="考试通过"){
+    if (document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_tips > p").textContent.trim()=="考试通过"){
         dellocalStorage("sub_ans");
         dellocalStorage("correct_ans");
         dellocalStorage("wrong_ans");
         var finish_state=true;
-        for (j=1;j<=document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul").childElementCount;j++){
-            if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > input").value=="立即学习"){
+        for (j=1;j<=document.querySelector("#ctl00 > div.container > div > div.cent_box > ul").childElementCount;j++){
+            if (document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > input").value=="立即学习"){
                 var finish_state=false;
                 console.log("Congratulations! We will move to next class in "+wait_time+"s...");
-                console.log("Next:"+document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > p").title);
+                console.log("Next:"+document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > p").title);
                 sleep();
-                document.querySelector("#ctl00 > div.state_container > div.state_cent_box > ul > li:nth-child("+j+") > input").click();
+                document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > input").click();
                 break;
             };
         }
@@ -113,9 +113,9 @@
         setlocalStorage("correct_ans",JSON.stringify(correct_ans));
         setlocalStorage("wrong_ans",JSON.stringify(wrong_ans));
         sleep();
-        document.querySelector("#ctl00 > div.state_container > div.state_cent_box > div.state_foot > input:nth-child(2)").click();
+        document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(2)").click();
     };
-    if (document.querySelector("#ctl00 > div.state_container > div.state_cent_box > div.state_foot > input:nth-child(1)").value!="申请证书"){
+    if (document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(1)").value!="申请证书"){
         setTimeout(function(){location.reload();},wait_time * 1000);
     }else{
         console.log("Congratulations! It's all done~");
