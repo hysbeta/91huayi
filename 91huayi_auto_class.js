@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_class(91华医公需课选修课视频考试我全都要)
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  91huayi_auto_class_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
@@ -30,14 +30,10 @@
         for(var t = Date.now();Date.now() - t <= time;);
     }
     sleep();
+    if (document.querySelector("body").textContent.search("应用程序中的服务器错误。") != -1 && document.querySelector("body").textContent.search("运行时错误") != -1){
+        setTimeout(function(){location.reload();},wait_time * 1000);
+    };
     var fuc = setInterval(function() {
-        //if (typeof(banSeek)=="undefined"){
-        //    console.log("无法判断是否能自动跳过课程，请自己尝试。");
-        //}else{
-        //    if (banSeek=="off"){
-        //        enableStartExam();
-        //    };
-        //};
         document.querySelector("#video > div > div.pv-video-wrap > video").muted=true; //启用未交互后台播放
         document.querySelector("#video > div > div.pv-video-wrap > video").play(); //播放
         document.querySelector("#video > div > div.pv-video-wrap > video").volume=0; //播放器静音
@@ -48,6 +44,9 @@
         if (document.querySelector("#video > div > div.pv-ask-modal-wrap") != null){
             document.querySelector("#video > div > div.pv-ask-modal-wrap").remove();
         }; //清除问题
+        if (document.querySelector("#video > div > div.sign-in-menu > div") != null){
+            document.querySelector("#video > div > div.sign-in-menu > div").remove();
+        }; //清除签到
         if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right") != null){
             for (var i=1;i<=document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right").childElementCount;i++){
                 if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right > div:nth-child("+i+") > button") != null){
@@ -57,29 +56,10 @@
                 };
             };
         }; //播放按钮静音
-        if (if_rate_play==true){
-            if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right") != null){
-                for (var i=1;i<=document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right").childElementCount;i++){
-                    if (document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right > div:nth-child("+i+") > div > div") != null){
-                        if(document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right > div:nth-child("+i+") > div > div").className.indexOf('pv-rate-select') != -1){
-                            if(document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control.pv-stream-hide > div.pv-controls > div.pv-controls-right > div.pv-component-wrap.pv-small-hide.pv-btn-radius > div > div").childElementCount != 0){
-                                //document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right > div:nth-child("+i+") > div > div > div:nth-child(1)").setAttribute("data-rate",16);//MaxPower!!!
-                                document.querySelector("#video > div > div.pv-skin-blue.pv-video-bottom.pv-subtitle-hide.pv-base-control > div.pv-controls > div.pv-controls-right > div:nth-child("+i+") > div > div > div:nth-child(1)").click();
-                            }
-                        }
-                    };
-                };
-            };
-        };//加速播放
         initialSign(); //调用签到保活（保持播放）
         while (document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span") != null){
             document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span").click();
         }; //签到
-        //Skip video, use at you own risk!!!
-        //showExam(true);
-        //delCookie("playState");
-        //addCourseWarePlayRecord();
-        //Skip video, use at you own risk!!!
         document.querySelector("#jrks").click();
     },wait_time * 1000);
 })();
