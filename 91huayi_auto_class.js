@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_class(91华医公需课选修课视频考试我全都要)
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  91huayi_auto_class_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
@@ -9,9 +9,7 @@
 // @license      CC BY-NC-ND 2.0 DEED
 // ==/UserScript==
 // 不知道哪里出了问题，不能跳过课程了，先不要用跳过课程。。。
-// 公需课 ： 自动尝试跳过问题
-// 选修课 ： 自动尝试跳过课程
- 
+
 (function() {
     'use strict'
     alert = console.log;
