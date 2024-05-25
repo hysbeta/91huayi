@@ -8,13 +8,16 @@
 // @grant        none
 // @license      CC BY-NC-ND 2.0 DEED
 // ==/UserScript==
-// 不知道哪里出了问题，不能跳过课程了，先不要用跳过课程。。。
 
 (function() {
     'use strict'
     alert = console.log;
     console.log('91huayi_auto_class_v3');
     var wait_time=6;
+    function setlocalStorage(name,value)
+    {
+        localStorage.setItem(name,escape(value));
+    }
     function enableStartExam(){
         var btn_exam = $("#jrks");
         showExam(true);
@@ -61,5 +64,6 @@
             document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span").click();
         }; //签到
         document.querySelector("#jrks").click();
+        setlocalStorage("lastactionts",Date.parse(new Date()));
     },wait_time * 1000);
 })();
