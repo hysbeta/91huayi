@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_exam_sub_ans
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  91huayi_auto_exam_sub_ans_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/exam.aspx?*
@@ -103,6 +103,7 @@
     };
     console.log("sub_ans:"+JSON.stringify(sub_ans));
     setlocalStorage("sub_ans",JSON.stringify(sub_ans))
+    setlocalStorage("lastactionts",Date.parse(new Date()));
     document.querySelector("#btn_submit").click();
     setTimeout(function(){location.reload();},wait_time * 1000);
 })();
