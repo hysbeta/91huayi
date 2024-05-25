@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         91huayi_auto_ranking
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  91huayi_auto_ranking_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/course_evaluate.aspx?*
 // @grant        none
 // @license      CC BY-NC-ND 2.0 DEED
 // ==/UserScript==
+// Not sure if this still works, just keep it
 
 (function() {
     'use strict';
@@ -25,5 +26,6 @@
     };
     document.querySelector("#xingxing > dd:nth-child(5)").click();
     document.querySelector("#OkNext").click();
+    setlocalStorage("lastactionts",Date.parse(new Date()));
     document.querySelector("#layui-layer1 > div.layui-layer-btn > a").click();
 })();
