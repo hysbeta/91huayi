@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_exam_chk_ans
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.3
 // @description  91huayi_auto_exam_chk_ans_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/exam_result.aspx?*
@@ -106,6 +106,7 @@
                 var finish_state=false;
                 console.log("Congratulations! We will move to next class in "+wait_time+"s...");
                 console.log("Next:"+document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > p").title);
+                setlocalStorage("lastactionts",Date.parse(new Date()));
                 document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > input").click();
                 break;
             };
@@ -115,14 +116,14 @@
         dellocalStorage("sub_ans");
         setlocalStorage("correct_ans",JSON.stringify(correct_ans));
         setlocalStorage("wrong_ans",JSON.stringify(wrong_ans));
+        setlocalStorage("lastactionts",Date.parse(new Date()));
         document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(2)").click();
     };
     if (document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(1)").value!="申请证书"){
+        setlocalStorage("lastactionts",Date.parse(new Date()));
         setTimeout(function(){location.reload();},wait_time * 1000);
     }else{
         console.log("Congratulations! It's all done~");
-        if (finish_state){
-            document.querySelector("#ctl00 > div.tan_box > div.but_item > button").click();
-        };
+        setTimeout(function(){setlocalStorage("lastactionts",Date.parse(new Date()));},wait_time * 1000);
     }
 })();
