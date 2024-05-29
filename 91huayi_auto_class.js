@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_class(91华医公需课选修课视频考试我全都要)
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  91huayi_auto_class_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
@@ -12,12 +12,12 @@
 (function() {
     'use strict'
     alert = console.log;
-    console.log('91huayi_auto_class_v3');
-    var wait_time=6;
+    console.log('91huayi_auto_class_v1.4');
+    var wait_time=10;
     function setlocalStorage(name,value)
     {
         localStorage.setItem(name,escape(value));
-    }
+    };
     function enableStartExam(){
         var btn_exam = $("#jrks");
         showExam(true);
@@ -26,12 +26,12 @@
         setTimeout(() => {
             p.trigger('click');
         }, wait_time);
-    }
+    };
     function sleep(time, unit){
         if(time == null){time = wait_time * 1000;}
         if(unit != null){time = time * 1000;}
         for(var t = Date.now();Date.now() - t <= time;);
-    }
+    };
     sleep();
     if (document.querySelector("body").textContent.search("应用程序中的服务器错误。") != -1 && document.querySelector("body").textContent.search("运行时错误") != -1){
         setTimeout(function(){location.reload();},wait_time * 1000);
@@ -65,7 +65,7 @@
         }; //签到
         if (document.querySelector("#video > div > div.pv-video-wrap > div.pv-log-error > div.pv-log-errormsg").textContent!=""){
             console.log("Looks like something goes wrong, try refresh the page after 10s...");
-            setTimeout(function(){location.reload();},wait_time * 10000);
+            setTimeout(function(){location.reload();},wait_time * 1000);
         }; //If error
         document.querySelector("#jrks").click();
         setlocalStorage("lastactionts",Date.parse(new Date()));
