@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_exam_keep_alive
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  91huayi_auto_exam_keep_alive_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/course.aspx?cid=*
@@ -16,7 +16,7 @@
     'use strict';
     alert = console.log;
     var wait_time=10;
-    console.log('91huayi_auto_exam_keep_alive_v1');
+    console.log('91huayi_auto_exam_keep_alive_v1.4');
     function getlocalStorage(name)
     {
         if(localStorage.getItem(name)!=null){
@@ -24,29 +24,17 @@
         }else{
             return null;
         }
-    }
+    };
     function setlocalStorage(name,value)
     {
         localStorage.setItem(name,escape(value));
-    }
-    function getsec(str)
-    {
-        //alert(str);
-        var str1=str.substring(1,str.length)*1;
-        var str2=str.substring(0,1);
-        if (str2=="s")
-        {
-            return str1*1000;
-        }
-        else if (str2=="h")
-        {
-            return str1*60*60*1000;
-        }
-        else if (str2=="d")
-        {
-            return str1*24*60*60*1000;
-        }
-    }
+    };
+    function sleep(time, unit){
+        if(time == null){time = wait_time * 1000;}
+        if(unit != null){time = time * 1000;}
+        for(var t = Date.now();Date.now() - t <= time;);
+    };
+    sleep();
     if (document.querySelector("body").textContent.search("应用程序中的服务器错误。") != -1 && document.querySelector("body").textContent.search("运行时错误") != -1){
         setTimeout(function(){location.reload();},wait_time * 1000);
     };
@@ -54,7 +42,7 @@
         window.close();
     };
     if (window.location.href.search("login.aspx") != -1){
-        setTimeout(function(){location.reload();},wait_time * 15000);
+        setTimeout(function(){location.reload();},wait_time * 1000 * 2);
     };
     if (window.location.href.search("cme/index.html") != -1 && getlocalStorage("classURL") != null){
         window.location.href=getlocalStorage("classURL");
@@ -64,11 +52,11 @@
     };
     if (getlocalStorage("lastactionts") == null){
         console.log("Class not started yet or last action ts misssing. Do nothing now...");
-        setTimeout(function(){location.reload();},wait_time * 15000);
+        setTimeout(function(){location.reload();},wait_time * 1000 * 2);
     }else{
-        if (Date.parse(new Date()) - getlocalStorage("lastactionts") < 30000){
+        if (Date.parse(new Date()) - getlocalStorage("lastactionts") < wait_time * 1000 * 3){
             console.log("Having class now...");
-            setTimeout(function(){location.reload();},wait_time * 30000);
+            setTimeout(function(){location.reload();},wait_time * 1000 * 3);
         }else{
             console.log("Seems like got exception, try to take class again...");
             var i;
@@ -80,7 +68,7 @@
                     };
                 };
             };
-            setTimeout(function(){location.reload();},wait_time * 30000);
+            setTimeout(function(){location.reload();},wait_time * 1000 * 3);
         };
     };
 })();
