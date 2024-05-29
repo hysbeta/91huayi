@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_exam_chk_ans
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  91huayi_auto_exam_chk_ans_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/exam_result.aspx?*
@@ -13,38 +13,7 @@
     'use strict';
     alert = console.log;
     var wait_time=10;
-    console.log('91huayi_auto_exam_chk_ans_v2');
-    function sleep(time, unit){
-        if(time == null){time = wait_time * 1000;}
-        if(unit != null){time = time * 1000;}
-        for(var t = Date.now();Date.now() - t <= time;);
-    }
-    sleep();
-    if (document.querySelector("body").textContent.search("应用程序中的服务器错误。") != -1 && document.querySelector("body").textContent.search("运行时错误") != -1){
-        setTimeout(function(){location.reload();},wait_time * 1000);
-    };
-    function setlocalStorage(name,value)
-    {
-        localStorage.setItem(name,escape(value));
-    }
-    function getsec(str)
-    {
-        //alert(str);
-        var str1=str.substring(1,str.length)*1;
-        var str2=str.substring(0,1);
-        if (str2=="s")
-        {
-            return str1*1000;
-        }
-        else if (str2=="h")
-        {
-            return str1*60*60*1000;
-        }
-        else if (str2=="d")
-        {
-            return str1*24*60*60*1000;
-        }
-    }
+    console.log('91huayi_auto_exam_chk_ans_v1.4');
     function getlocalStorage(name)
     {
         if(localStorage.getItem(name)!=null){
@@ -52,11 +21,24 @@
         }else{
             return null;
         }
-    }
+    };
+    function setlocalStorage(name,value)
+    {
+        localStorage.setItem(name,escape(value));
+    };
     function dellocalStorage(name)
     {
        localStorage.removeItem(name);
-    }
+    };
+    function sleep(time, unit){
+        if(time == null){time = wait_time * 1000;}
+        if(unit != null){time = time * 1000;}
+        for(var t = Date.now();Date.now() - t <= time;);
+    };
+    sleep();
+    if (document.querySelector("body").textContent.search("应用程序中的服务器错误。") != -1 && document.querySelector("body").textContent.search("运行时错误") != -1){
+        setTimeout(function(){location.reload();},wait_time * 1000);
+    };
     if (getlocalStorage("sub_ans")==null){
         var sub_ans = {};
     }else{
