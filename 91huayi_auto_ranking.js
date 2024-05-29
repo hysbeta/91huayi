@@ -1,20 +1,23 @@
 // ==UserScript==
 // @name         91huayi_auto_ranking
 // @namespace    http://tampermonkey.net/
-// @version      1.3
+// @version      1.4
 // @description  91huayi_auto_ranking_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/pages/course_evaluate.aspx?*
 // @grant        none
 // @license      CC BY-NC-ND 2.0 DEED
 // ==/UserScript==
-// Not sure if this still works, just keep it
 
 (function() {
     'use strict';
     alert = console.log;
-    var wait_time=6;
+    var wait_time=10;
     console.log('91huayi_auto_ranking_v2');
+    function setlocalStorage(name,value)
+    {
+        localStorage.setItem(name,escape(value));
+    };
     function sleep(time, unit){
         if(time == null){time = wait_time * 1000;}
         if(unit != null){time = time * 1000;}
