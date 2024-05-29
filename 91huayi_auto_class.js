@@ -63,6 +63,10 @@
         while (document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span") != null){
             document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span").click();
         }; //签到
+        if (document.querySelector("#video > div > div.pv-video-wrap > div.pv-log-error > div.pv-log-errormsg").textContent!=""){
+            console.log("Looks like something goes wrong, try refresh the page after 10s...");
+            setTimeout(function(){location.reload();},wait_time * 10000);
+        }; //If error
         document.querySelector("#jrks").click();
         setlocalStorage("lastactionts",Date.parse(new Date()));
     },wait_time * 1000);
