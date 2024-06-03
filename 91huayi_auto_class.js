@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_class(91华医公需课选修课视频考试我全都要)
 // @namespace    https://github.com/hysbeta/91huayi
-// @version      2.4
+// @version      2.4.1
 // @description  91huayi_auto_class_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
@@ -14,8 +14,8 @@
 // @grant        none
 // @supportURL   https://github.com/hysbeta/91huayi
 // @license      CC BY-NC-ND 2.0 DEED
-// @downloadURL  https://raw.githubusercontent.com/hysbeta/91huayi/master/91huayi_auto_class.js
-// @updateURL    https://raw.githubusercontent.com/hysbeta/91huayi/master/91huayi_auto_class.js
+// @downloadURL https://update.greasyfork.org/scripts/477268/91huayi_auto_class%2891%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81%29.user.js
+// @updateURL https://update.greasyfork.org/scripts/477268/91huayi_auto_class%2891%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81%29.meta.js
 // ==/UserScript==
 
 (function() {
@@ -204,7 +204,7 @@
 			for (j=1;j<=document.querySelector("#ctl00 > div.container > div > div.cent_box > ul").childElementCount;j++){
 				if (document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > input").value=="立即学习"){
 					var finish_state=false;
-					console.log("Congratulations! We will move to next class in "+wait_time+"s...");
+					console.log("Congratulations! We will move to next class ...");
 					console.log("Next:"+document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > p").title);
 					setlocalStorage("lastactionts",Date.parse(new Date()));
 					document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > input").click();
@@ -219,14 +219,15 @@
 			setlocalStorage("lastactionts",Date.parse(new Date()));
 			document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(2)").click();
 		};
-		if (document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(1)").value!="申请证书"){
+		if (finish_state==false){
+            console.log("Now in finished page, but finish_state is false, will reload the page to see what happen...");
 			setlocalStorage("lastactionts",Date.parse(new Date()));
 			setTimeout(function(){location.reload();},wait_time * 1000);
 		}else{
+            console.log("Now in finished page");
 			console.log("Congratulations! It's all done~");
 			dellocalStorage("classURL");
-            console.log("Now in finished page");
-            window.close();
+            window.clos();
 			setTimeout(function(){setlocalStorage("lastactionts",Date.parse(new Date()));},wait_time * 1000);
 		};
     };
