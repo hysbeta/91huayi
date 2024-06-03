@@ -23,7 +23,7 @@
   
     https://microsoftedge.microsoft.com/addons/detail/iikmkjmpaadaobahmlepeloendndfphd
     
-3.导入5个js结尾的脚本并启用
+3.导入js结尾的脚本并启用 / 或者点击安装https://greasyfork.org/zh-CN/scripts/477268-91huayi-auto-class-91%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81
 
 4.点开学习中的课，打开让他挂着(最好打开完停留在视频页面，千万不要切换到别的Tab)
 
