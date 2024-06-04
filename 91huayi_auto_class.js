@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_class(91华医公需课选修课视频考试我全都要)
 // @namespace    https://github.com/hysbeta/91huayi
-// @version      2.4.1
+// @version      2.5
 // @description  91huayi_auto_class_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
@@ -14,8 +14,8 @@
 // @grant        none
 // @supportURL   https://github.com/hysbeta/91huayi
 // @license      CC BY-NC-ND 2.0 DEED
-// @downloadURL  https://raw.githubusercontent.com/hysbeta/91huayi/master/91huayi_auto_class.js
-// @updateURL    https://raw.githubusercontent.com/hysbeta/91huayi/master/91huayi_auto_class.js
+// @downloadURL https://update.greasyfork.org/scripts/477268/91huayi_auto_class%2891%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81%29.user.js
+// @updateURL https://update.greasyfork.org/scripts/477268/91huayi_auto_class%2891%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81%29.meta.js
 // ==/UserScript==
 
 (function() {
@@ -99,8 +99,8 @@
 				console.log("Looks like something goes wrong, try refresh the page after 10s...");
 				setTimeout(function(){location.reload();},wait_time * 1000);
 			}; //If error
-			document.querySelector("#jrks").click();
 			setlocalStorage("lastactionts",Date.parse(new Date()));
+			document.querySelector("#jrks").click();
 		},wait_time * 1000);
     };
     if (window.location.href.search(".91huayi.com/pages/exam.aspx") != -1){
@@ -197,6 +197,7 @@
 		console.log("correct_ans:"+JSON.stringify(correct_ans));
 		console.log("wrong_ans:"+JSON.stringify(wrong_ans));
 		if (document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_tips > p").textContent.trim()=="考试通过"){
+            console.log("Congratulations! Now in exam result @ pass page...");
 			dellocalStorage("sub_ans");
 			dellocalStorage("correct_ans");
 			dellocalStorage("wrong_ans");
@@ -204,31 +205,30 @@
 			for (j=1;j<=document.querySelector("#ctl00 > div.container > div > div.cent_box > ul").childElementCount;j++){
 				if (document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > input").value=="立即学习"){
 					var finish_state=false;
-					console.log("Congratulations! We will move to next class ...");
+					console.log("We will move to next class ...");
 					console.log("Next:"+document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > p").title);
 					setlocalStorage("lastactionts",Date.parse(new Date()));
 					document.querySelector("#ctl00 > div.container > div > div.cent_box > ul > li:nth-child("+j+") > input").click();
 					break;
 				};
-			}
+			};
+            sleep();
+			setlocalStorage("lastactionts",Date.parse(new Date()));
+            if (finish_state==false){
+                console.log("Now in finished page, no class to learn but finish_state is false, will reload the page to see what happen...");
+            }else{
+                console.log("Congratulations! It's all done~");
+                window.close();
+                dellocalStorage("classURL");
+            };
+			setTimeout(function(){setlocalStorage("lastactionts",Date.parse(new Date()));},wait_time * 1000);
 		}else{
-			console.log("Oh... We will take the exam again in "+wait_time+"s...");
+            console.log("Sad... Now in exam result @ fail page...will take the exam again in "+wait_time+"s...");
 			dellocalStorage("sub_ans");
 			setlocalStorage("correct_ans",JSON.stringify(correct_ans));
 			setlocalStorage("wrong_ans",JSON.stringify(wrong_ans));
 			setlocalStorage("lastactionts",Date.parse(new Date()));
 			document.querySelector("#ctl00 > div.container > div > div.cent_box > div.state_foot > input:nth-child(2)").click();
-		};
-		if (finish_state==false){
-            console.log("Now in finished page, but finish_state is false, will reload the page to see what happen...");
-			setlocalStorage("lastactionts",Date.parse(new Date()));
-			setTimeout(function(){location.reload();},wait_time * 1000);
-		}else{
-            console.log("Now in finished page");
-			console.log("Congratulations! It's all done~");
-			dellocalStorage("classURL");
-            window.clos();
-			setTimeout(function(){setlocalStorage("lastactionts",Date.parse(new Date()));},wait_time * 1000);
 		};
     };
     if (window.location.href.search(".91huayi.com/pages/course.aspx") != -1){
@@ -252,6 +252,9 @@
 						};
 					};
 					dellocalStorage("classURL");
+                    if (Date.parse(new Date()) - getlocalStorage("lastactionts") < wait_time * 1000 * 60){
+                        dellocalStorage("lastactionts");
+                    };
 				};
                 console.log("Will refresh the page in 30s...");
 				setTimeout(function(){location.reload();},wait_time * 1000 * 3);
