@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_class(91华医公需课选修课视频考试我全都要)
 // @namespace    https://github.com/hysbeta/91huayi
-// @version      2.5
+// @version      2.6
 // @description  91huayi_auto_class_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
@@ -100,7 +100,19 @@
 				setTimeout(function(){location.reload();},wait_time * 1000);
 			}; //If error
 			setlocalStorage("lastactionts",Date.parse(new Date()));
-			document.querySelector("#jrks").click();
+            if (document.querySelector("#jrks").getAttribute('disabled') == 'disabled'){
+                console.log("Not ready for exam yet...");
+            }else{
+                console.log("Ready for exam, wait "+wait_time+"s to go...");
+                initialSign(); //调用签到保活（保持播放）
+                while (document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span") != null){
+                    document.querySelector("#video > div > div.sign-in-menu > div > div.sign-in-wrap > div.sign-in-wrap_btn > span").click();
+                }; //签到
+                sleep();
+                document.querySelector("#jrks").click();
+                sleep();
+				setTimeout(function(){location.reload();},wait_time * 1000);
+            };
 		},wait_time * 1000);
     };
     if (window.location.href.search(".91huayi.com/pages/exam.aspx") != -1){
@@ -246,8 +258,8 @@
 				var i;
 				for (i=3;i<=document.querySelector("#containter > div.main > div.colm_mid").childElementCount;i++){
 					if (document.querySelector("#containter > div.main > div.colm_mid > div:nth-child("+i+")").getAttribute("class")=="course"){
-						if (document.querySelector("#containter > div.main > div.colm_mid > div:nth-child("+i+") > h3 > span > a > img").getAttribute("src").search("anniu_03a.gi") == -1){
-							document.querySelector("#containter > div.main > div.colm_mid > div:nth-child("+i+") > h3 > span > a > img").click();
+						if (document.querySelector("#containter > div.main > div.colm_mid > div:nth-child("+i+") > h3 > span") == null || document.querySelector("#containter > div.main > div.colm_mid > div:nth-child("+i+") > h3 > span").textContent != "学习完毕"){
+							document.querySelector("#containter > div.main > div.colm_mid > div:nth-child("+i+") > h3 > a").click();
 							break
 						};
 					};
