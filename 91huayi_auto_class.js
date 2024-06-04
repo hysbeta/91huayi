@@ -14,8 +14,8 @@
 // @grant        none
 // @supportURL   https://github.com/hysbeta/91huayi
 // @license      CC BY-NC-ND 2.0 DEED
-// @downloadURL https://update.greasyfork.org/scripts/477268/91huayi_auto_class%2891%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81%29.user.js
-// @updateURL https://update.greasyfork.org/scripts/477268/91huayi_auto_class%2891%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81%29.meta.js
+// @downloadURL  https://github.com/hysbeta/91huayi/raw/master/91huayi_auto_class.js
+// @updateURL    https://github.com/hysbeta/91huayi/raw/master/91huayi_auto_class.js
 // ==/UserScript==
 
 (function() {
