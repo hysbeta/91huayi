@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         91huayi_auto_class(91华医公需课选修课视频考试我全都要)
 // @namespace    https://github.com/hysbeta/91huayi
-// @version      2.6.4
+// @version      3.5
 // @description  91huayi_auto_class_
 // @author       Acdtms4zfx
 // @match        *://*.91huayi.com/course_ware/*
@@ -17,6 +17,8 @@
 // @downloadURL https://update.greasyfork.org/scripts/477268/91huayi_auto_class%2891%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81%29.user.js
 // @updateURL https://update.greasyfork.org/scripts/477268/91huayi_auto_class%2891%E5%8D%8E%E5%8C%BB%E5%85%AC%E9%9C%80%E8%AF%BE%E9%80%89%E4%BF%AE%E8%AF%BE%E8%A7%86%E9%A2%91%E8%80%83%E8%AF%95%E6%88%91%E5%85%A8%E9%83%BD%E8%A6%81%29.meta.js
 // ==/UserScript==
+//2025/05/31注：今年网站改动不多，改好新脚本后刷公需课+考试和选修课+答题都很顺利。等我先用一段时间后再放出来吧~如果乐意让我恰一点（指代课）的话也可以通过绿色软件Acdtms4zfx联系我~
+//course_list = "f55691fe-59c4-4ca2-8570-5b103ec6dc51;ada5f531-6def-4171-a149-be729b1ef427;50a6cf9d-f90b-408d-9df8-c0af69a9fb8e;f1971e16-20c4-4fe2-afb5-7774de5b801d";  
 (function() {
 	'use strict';
 	alert = console.log;
